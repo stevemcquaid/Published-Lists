@@ -1,0 +1,296 @@
+/*
+	Published Lists CSS
+	Don't judge me, it's ugly
+	
+	By Harold Kim, hcokim.com
+*/
+
+
+@import url(http://fonts.googleapis.com/css?family=Roboto:400,300,100,300italic,400italic,700);
+
+
+* {
+	cursor: default;
+	-webkit-box-sizing: border-box;
+}
+
+html {
+	width: 100%;
+	height: 100%;
+}
+
+body {
+	
+	height: 100%;
+	width: 100%;
+	
+	background: #333333; /* Old browsers */
+	background: -moz-linear-gradient(top,  #333333 0%, #444444 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#333333), color-stop(100%,#444444)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  #333333 0%,#444444 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  #333333 0%,#444444 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  #333333 0%,#444444 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  #333333 0%,#444444 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#333333', endColorstr='#444444',GradientType=0 ); /* IE6-9 */
+	
+	font-family: 'Roboto', sans-serif;
+}
+
+body > .box {
+	position: absolute;
+	top: 0px; bottom: 0px;
+	color: white;
+	padding: 40px;
+	overflow-y: auto;
+}
+
+#box_lists {
+	left: 0px;
+}
+
+#box_notes {
+	right: 0;
+	width: 250px;
+}
+
+.box .header {
+/*	font-family: Arial, sans-serif;*/
+	font-weight: 300;
+	font-size: 0.7em;
+	text-transform: uppercase;
+	letter-spacing: 4px;
+	margin-bottom: 30px;
+	color: #888;
+}
+
+#lists > div {
+	font-weight: 300;
+	font-size: 0.8em;
+	padding-bottom: 15px;
+	letter-spacing: 1px;
+	color: #888;
+	-webkit-transition: all 0.2s;
+	-moz-transition: all 0.2s;
+}
+
+#lists > div:hover,
+#lists .active {
+	color: #FFF;
+}
+
+/* ======================
+	DRAGGER
+====================== */
+
+#dragger {
+	display: none;
+}
+
+/* ======================
+	ITEMS
+====================== */
+
+#box_items {
+	left: 250px;
+	right: 40px;
+	overflow-x: hidden;
+}
+
+#box_items .header {
+	font-size: 1.6em;
+	text-transform: none;
+	letter-spacing: 0px;
+	margin: 0px; padding: 0px;
+	padding-bottom: 20px;
+	color: white;
+	font-weight: 300;
+}
+
+#box_items #notes {
+	font-size: 1em;
+	font-weight: 300;
+	padding-bottom: 50px;
+	line-height: 1.45em;
+	color: #AAA;
+	font-style: italic;
+	max-width: 500px;
+}
+
+#items .done {
+	color: #888;
+	text-decoration: line-through;
+}
+
+#items .disabled {
+	color: #888;
+	-webkit-animation: pulse_disable 1s infinite;
+}
+
+#items > div {
+	font-size: 1em;
+	font-weight: 300;
+	padding-bottom: 25px;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+	visibility: hidden;
+	color: #EEE;
+	position: relative;
+}
+
+#items > div p {
+	margin-left: 40px;
+}
+
+#items a {
+	position: absolute;
+	left: 0px;
+	padding-right: 20px;
+	color: #4285F4;
+	font-size: 0.9em;
+	text-decoration: none;
+	-webkit-transition: all 0.16s;
+}
+
+#items a:hover {
+	color: #FFF;
+	cursor: pointer;
+}
+
+@-webkit-keyframes pulse_disable {
+	
+	0%   { color: #888; }
+	50%  { color: #AAA; }
+	100% { color: #888; }
+	
+}
+
+#menu {
+	display: none;
+}
+#return {
+	position: absolute;
+	left: 20px;
+	bottom: 20px;
+	background: rgba(0,0,0,0.3);
+	padding: 10px;
+	border-radius: 3px;
+	color: #AAA;
+	font-weight: 300;
+	font-size: 0.6em;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+}
+
+#return:hover {
+	color: #FFF;
+}
+
+@media only screen and (max-width: 601px){
+
+	#return {
+		display: none;
+	}
+	#menu {
+		display: block;
+		position: absolute;
+		right: 4px;
+		top: 4px;
+		z-index: 4;
+	}
+	body > .box {
+		padding: 40px;
+	}
+	.box > .header {
+		width: 70%;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		overflow: hidden;
+	}
+	#box_lists {
+		z-index: 5;
+		background: #222;
+		width: 100%;
+	}
+	#lists {
+		position: absolute;
+		top: 100px;
+		left: 40px;
+		right: 0px;
+		bottom: 80px;
+		overflow-y: auto;
+		-webkit-overflow-scrolling: touch;
+	}
+	#lists > div:not(.header) {
+		font-size: 1.2em;
+		font-weight: 300;
+		padding-bottom: 30px;
+	}
+	
+	#dragger {
+		display: block;
+		position: absolute;
+		bottom: 0px;
+		left: 0px;
+		height: 80px;
+		z-index: 2;
+		width: 100%;
+		background: rgba(0,0,0,0.1);
+	}
+	#dragger:active {
+		background: rgba(0,0,0,0.2);
+	}
+	
+	#box_lists > .header {
+		letter-spacing: 10px;
+		margin-bottom: 50px;
+		font-size: 0.9em;
+		position: absolute;
+		top: 40px;
+	}
+	#box_items {
+		left: 0px;
+		top: 0px;
+		bottom: 0px;
+		right: 0px;
+		padding: 30px;
+		-webkit-overflow-scrolling: touch;
+	}
+	#items {
+		-webkit-overflow-scrolling: touch;
+		overflow-x: hidden;
+	}
+	#items > div {
+		padding-bottom: 25px;
+		text-overflow: ellipsis;
+		width: 100%;
+	}
+	#items > div p {
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		line-height: 1.3em;
+	}
+	#items > div a {
+		position: absolute;
+		left: 0px;
+		top: 0px;
+		color: #4285F4;
+		font-size: 1em;
+		padding: 0px;
+		line-height: 1.3em;
+		z-index: 1;
+	}
+	#box_items .header {
+		font-size: 1.7em;
+		white-space: normal;
+		overflow: visible;
+		line-height: 1.2em;
+		font-weight: 300;
+		width: 70%;
+	}
+	#box_items #notes {
+		font-size: 1em;
+	}
+
+}
